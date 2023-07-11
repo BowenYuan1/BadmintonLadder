@@ -1,0 +1,75 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Login";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+</head>
+    <body>
+        <div>
+            <style>
+
+                .Login {
+                    margin: auto;
+                    display: incline-block;
+                    width: 360px;
+                    font-family: Arial;
+                }
+
+                .Login-word {
+                    font-size: 30px;
+                }
+
+                .Credentials {
+                    font-size: 15px;
+                    line-height: 0px;
+                }
+
+                .submit-button {
+                    height: 35px;
+                    width: 80px;
+                    font-size: 20px;
+                    margin-left: 280px;
+                }
+
+                .Logodiv {
+                    display: block;
+                }
+            </style>
+            <div>
+                <div class="Login">
+                    <div class="Logodiv">
+                        <img src="./SBCLogoFinal.png" ; style="width: 360px">
+                    </div>
+                    <div class="Login-word text-center">
+                        <p>Login</p>
+                    </div>
+                    <div class="Credentials">
+                        <p>Username</p>
+                        <input class="Username-Input" type="text" style="width: 350px">
+                        <p style="margin-top: 20px">Password</p>
+                        <input class="Password-Input" type="text" style="width: 350px">
+                    </div>
+                    <div class="Extras">
+                        <a href="https://www.google.com/" ; style="font-size: 17px">Forgot Password?</a>
+                        <p style="margin-top: 20px; font-size: 14px">
+                            Don't have a account?
+                            <a href="https://www.google.com/">Sign up here</a>
+                        </p>
+                        <a href="https://www.google.com/">
+                            <button class="submit-button">Submit</button>
+                        </a>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </body>
+    
+</html>
+}

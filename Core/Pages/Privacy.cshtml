@@ -1,0 +1,22 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Privacy</title>
+        <h1>@ViewData["Title"]</h1>
+    </head>
+    <body>
+        <!--<p>This page is under construction as of @ViewData["Timestamp"]</p>-->
+    <p id="Paragraph"></>@Model.Description</p>
+        <p><button id="Button1">Click</button></p>
+        <form id="form1" runat="server">
+            <button name="btn" type="submit" value="1">Apply</button>
+        </form>
+    </body>
+</html>
+
