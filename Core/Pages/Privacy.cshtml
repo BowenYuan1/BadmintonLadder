@@ -7,16 +7,70 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Privacy</title>
         <h1>@ViewData["Title"]</h1>
     </head>
     <body>
         <!--<p>This page is under construction as of @ViewData["Timestamp"]</p>-->
-    <p id="Paragraph"></>@Model.Description</p>
-        <p><button id="Button1">Click</button></p>
-        <form id="form1" runat="server">
-            <button name="btn" type="submit" value="1">Apply</button>
+        <p id="Paragraph">@Model.Description</p>
+        <div>
+            <p>Input player names to assign each of them a partner</p>
+        </div>
+        <div>
+            <textarea rows="6" cols="40" id="NameInput"></textarea>
+        </div>
+        <div>
+            <button id="One" onclick="ButtonOneC()">1</button>
+            <button id="Two" onclick="ButtonTwoC()">2</button>
+        </div>
+
+        <form method="post" id="testing" runat="server">
+            <!--Sends user input information-->
+            <input type="text" id="SendName" name="NameInput" value="">
+            <input type="text" name="clickval" value=oneclicked>
+            <button name="apply" type="submit" value="1">Apply</button>
         </form>
+        <script>
+            var form = document.getElementById("testing");
+            form.addEventListener("submit", function (event) {
+                document.getElementById("SendName").value = document.getElementById("NameInput").value;
+            });
+            let oneclicked = 0;
+            let twoclicked = 0;
+            //var NameInput = document.getElementById("NameInput");
+            var button = document.getElementById("One");
+            function ButtonOneC() {
+                oneclicked = 1;
+                ButtonCheckO();
+            }
+            function ButtonTwoC() {
+                twoclicked = 1;
+                ButtonCheckT();
+            }
+            function ButtonCheckO()
+            {
+                if (Boolean(oneclicked) && !oneclicked) {
+                    oneclicked = 1;
+                }else
+                {
+                    oneclicked = 0;
+                }
+            }
+            function ButtonCheckT()
+            {
+                if (Boolean(twoclicked) && !twoclicked) {
+                    twoclicked = 1;
+                } else {
+                    
+                    twoclicked = 0;
+                }
+            }
+                    //@Model.Input
+        </script>
+        
+        <form id="some" runat="server">
+            
+        </form>
+        <p>Please input with a comma and a space between each name</p>
+        <p>@Model.Description</p>
     </body>
 </html>
-
