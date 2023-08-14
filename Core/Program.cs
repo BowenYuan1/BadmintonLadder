@@ -22,4 +22,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+Core.DBConnection.Init(app.Configuration.GetConnectionString("CONNECTIONSTRING"));
+
 app.Run();

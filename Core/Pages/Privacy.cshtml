@@ -1,8 +1,10 @@
 ﻿@page
+@using System.Configuration;
 @model PrivacyModel
 @{
     ViewData["Title"] = "Privacy Policy";
 }
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +28,7 @@
         <form method="post" id="testing" runat="server">
             <!--Sends user input information-->
             <input type="text" id="SendName" name="NameInput" value="">
-            <input type="text" name="clickval" value=oneclicked>
+            <input type="text" name="clickval" value="">
             <button name="apply" type="submit" value="1">Apply</button>
         </form>
         <script>
