@@ -51,40 +51,14 @@ namespace Core.Pages
 
                     using var conn = Core.DBConnection.Connection;
                     
-                    try
-                    {
-                        if (conn != null)
-                        {
-                            var rows = new List<string>();
-                            var command = new SqlCommand("INSERT Persons (FirstName) VALUES (@FirstName)", conn); //inserts a new row into the table
-                            for (int k = 0; k < NameArr.Length; k++) 
-                            {
-                                //command.Parameters["@FirstName"].Value = NameArr[k];
-                                int rowsAffected = command.ExecuteNonQuery();
-                                if (rowsAffected > 0) // checks if there was a new row that was inserted.
-                                {
-                                    Console.WriteLine($"Row {k + 1} inserted successfully.");
-                                }
-                                else
-                                {
-                                    Console.WriteLine($"Failed to insert row {k + 1}.");
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
                     Ladder same = new Ladder();
-                    try // gets the first 3 names from the table and gets the name with the ID:SBC0003
-                    {
-                        
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
+                    
+                    // Recieves player names and input them into the players table.
+                    
+
+
+
+
                     Random random = new Random(); // splits the input into individual names and randomize the players for teaming.
                     for (int i = NameArr.Length - 1; i > 0; i--) 
                     {
@@ -137,34 +111,7 @@ namespace Core.Pages
                         Console.WriteLine(e.Message);
                     }
 
-                    try
-                    {
-                        if (conn != null)
-                        {
-                            var rows = new List<string>();
-
-                            var command = new SqlCommand("SELECT * FROM Persons WHERE ID = @TargetID;", conn); // Finds the name of the person who has a specific ID.
-                            command.Parameters.AddWithValue("@TargetID", "SBC0003");
-                            using SqlDataReader reader = command.ExecuteReader();
-                            String Names = "";
-                            if (reader.Read())
-                            {
-                                //rows.Add($"{reader.GetInt32(0)}, {reader.GetString(1)}, {reader.GetString(2)}");
-                                string firstNames = reader.GetString(1);
-                                string lastNames = reader.GetString(2);
-
-                                Names += firstNames + " " + lastNames + "\n"; // prints out the name on the page.
-                            }
-                            
-                            this.Description = Names;
-                            Ladder some = new Ladder();
-                        }
-
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
+                    
                 }
             }
                 //This is a comment

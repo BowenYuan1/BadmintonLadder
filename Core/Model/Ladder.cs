@@ -6,8 +6,9 @@ namespace Core.Model
 {
     public class Ladder // Accessing information on the ladders
     {
-        public String LadderID { get; set; }
-        public String LadderInfo { get; set; }
+        public String LadderID { get; private set; }
+        public String LadderInfo { get; private set; }
+        public String LadderDate { get; private set; }
         public String GetLadderInfo()
         {
             using var conn = Core.DBConnection.Connection;
@@ -60,9 +61,32 @@ namespace Core.Model
             }
             return null;
         }
-        public Ladder GetLadder() 
+        public Ladder GetLadder() // Assumes the ID as already been inserted
         {
+            try 
+            {
+                this.LadderInfo = GetLadderInfo();
+                this.LadderDate = GetLadderDate();
+            }
+            catch (Exception e) 
+            {
+                Console.WriteLine(e.Message);
+            }
+            return null;
+        }
 
+        public Ladder GetLadder(String ID) // Assumes the ID hasn't been inserted
+        {
+            try
+            {
+                this.LadderID = ID;
+                this.LadderInfo = GetLadderInfo();
+                this.LadderDate = GetLadderDate();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
             return null;
         }
         public Boolean AddLadder()  // Adds a new ladder into the db.
@@ -71,7 +95,6 @@ namespace Core.Model
             {
                 return false;
             }
-
             try
             {
                 using var conn = Core.DBConnection.Connection;
@@ -84,6 +107,7 @@ namespace Core.Model
                     if (rowsAffected > 0) // checks if there was a new row that was inserted.
                     {
                         Console.WriteLine($"Row inserted successfully.");
+                        return true;
                     }
                     else
                     {
@@ -97,6 +121,8 @@ namespace Core.Model
             }
             return false;
         }
+        
+
         public void AddID(string ID) //add the id to the Ladder Object in String form 
         {
             this.LadderID = ID;
@@ -104,6 +130,11 @@ namespace Core.Model
         public void AddLadderInfo(string Info) //add the ladder info to the Ladder Object in String form 
         {
             this.LadderInfo = Info;
+        }
+
+        public void StorePlayerList(string[] PlayerList) 
+        {
+            String[] players = PlayerList.Split(", ");
         }
     }
 }
